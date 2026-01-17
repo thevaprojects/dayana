@@ -1,479 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dayana Couture — Couture indienne sur-mesure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #0b0f17;
-            --card: rgba(255, 255, 255, 0.05);
-            --text: rgba(255, 255, 255, 0.95);
-            --muted: rgba(255, 255, 255, 0.70);
-            --accent: #f7c948; /* Or doré */
-            --line: rgba(255, 255, 255, 0.1);
-            --radius: 20px;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dayana Couture — Couture indienne sur-mesure</title>
 
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background: radial-gradient(circle at top right, rgba(247, 201, 72, 0.15), transparent), var(--bg);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* Navigation */
-        header {
-            position: sticky; top: 0; z-index: 100;
-            backdrop-filter: blur(15px);
-            background: rgba(11, 15, 23, 0.8);
-            border-bottom: 1px solid var(--line);
-        }
-        .nav {
-            display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo-img {
-            height: 50px;
-            width: auto;
-            filter: drop-shadow(0 2px 8px rgba(247, 201, 72, 0.3));
-        }
-        
-        .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .lang-switcher { display: flex; gap: 8px; }
-        .lang-switcher button {
-            background: rgba(255,255,255,0.05); border: 1px solid var(--line);
-            color: var(--muted); padding: 8px 12px; border-radius: 50px; cursor: pointer;
-            font-weight: 600; font-size: 12px; transition: 0.3s;
-        }
-        .lang-switcher button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-
-        /* Hero Section */
-        .hero { padding: 60px 0; text-align: center; }
-        .badge {
-            background: rgba(247, 201, 72, 0.1); color: var(--accent);
-            padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 700;
-            display: inline-block; margin-bottom: 20px; border: 1px solid rgba(247, 201, 72, 0.3);
-        }
-        h1 { font-size: clamp(32px, 5vw, 56px); margin: 0 0 20px; line-height: 1.1; }
-        .hero p { max-width: 700px; margin: 0 auto 30px; color: var(--muted); font-size: 18px; }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 16px 32px; border-radius: 50px; font-weight: 700;
-            text-decoration: none; transition: 0.3s; cursor: pointer;
-        }
-        .btn-primary { background: var(--accent); color: var(--bg); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(247, 201, 72, 0.2); }
-
-        /* Services Grid */
-        .section-title { text-align: center; margin-bottom: 40px; margin-top: 60px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card {
-            background: var(--card); border: 1px solid var(--line);
-            padding: 30px; border-radius: var(--radius); transition: 0.3s;
-        }
-        .card:hover { border-color: var(--accent); background: rgba(255,255,255,0.08); }
-        .card h3 { color: var(--accent); margin-top: 0; font-size: 20px; }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
-            aspect-ratio: 3/4;
-            border: 1px solid var(--line);
-            background: var(--card);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(247, 201, 72, 0.2);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(11, 15, 23, 0.95), transparent);
-            padding: 25px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-        
-        .gallery-overlay h4 {
-            margin: 0;
-            color: var(--accent);
-            font-size: 18px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .gallery-overlay p {
-            margin: 8px 0 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* Lightbox pour agrandir les images */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 15, 23, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        
-        .lightbox.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: var(--radius);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 40px;
-            color: var(--text);
-            cursor: pointer;
-            background: var(--card);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--line);
-            transition: 0.3s;
-        }
-        
-        .lightbox-close:hover {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-            transform: rotate(90deg);
-        }
-
-        /* Footer / Contact */
-        footer { padding: 60px 0; border-top: 1px solid var(--line); margin-top: 60px; text-align: center; }
-        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 30px; }
-        .info-item { display: flex; flex-direction: column; gap: 5px; }
-        .info-item label { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
-        .info-item span { font-size: 18px; font-weight: 600; }
-
-        /* Floating WhatsApp */
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25D366; color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
-            transition: 0.3s;
-        }
-        
-        .wa-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 36px; }
-            .lightbox-close { top: 15px; right: 15px; font-size: 30px; width: 40px; height: 40px; }
-            .logo-img { height: 40px; }
-            .logo-text { font-size: 16px; }
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <header>
-    <div class="container nav">
-        <div class="logo-container">
-            <img src="IMAGES/logo_NP.png" alt="NP Logo" class="logo-img">
-            <span class="logo-text">Dayana Couture</span>
-        </div>
-        <div class="lang-switcher">
-            <button onclick="changeLang('fr')" id="btn-fr" class="active">FR</button>
-            <button onclick="changeLang('ta')" id="btn-ta">தமிழ்</button>
-            <button onclick="changeLang('en')" id="btn-en">EN</button>
-        </div>
+  <div class="container nav">
+    <div class="logo-container">
+      <img src="IMAGES/logo_NP.png" alt="NP Logo" class="logo-img">
+      <span class="logo-text">Dayana Couture</span>
     </div>
+    <div class="lang-switcher">
+      <button type="button" id="btn-fr" class="active">FR</button>
+      <button type="button" id="btn-ta">தமிழ்</button>
+      <button type="button" id="btn-en">EN</button>
+    </div>
+  </div>
 </header>
 
 <main class="container">
-    <section class="hero">
-        <div class="badge" id="hero-badge">10 ans d'expérience</div>
-        <h1 id="hero-title">L'élégance indienne créée pour vous.</h1>
-        <p id="hero-desc">Spécialiste en Saree blouses, Lehenga, Salwar et tenues traditionnelles. Essayage personnalisé et retouches incluses à Stains.</p>
-        <a href="https://wa.me/33749743944" class="btn btn-primary" id="main-cta">Réserver via WhatsApp</a>
-    </section>
+  <section class="hero">
+    <div class="badge" id="hero-badge">10 ans d'expérience</div>
+    <h1 id="hero-title">L'élégance indienne créée pour vous.</h1>
+    <p id="hero-desc">Spécialiste en Saree blouses, Lehenga, Salwar et tenues traditionnelles. Essayage personnalisé et retouches incluses à Stains.</p>
+    <a href="https://wa.me/33749743944" class="btn btn-primary" id="main-cta" target="_blank" rel="noopener">Réserver via WhatsApp</a>
+  </section>
 
-    <div class="section-title">
-        <h2 id="services-title">Nos Créations</h2>
-    </div>
-    <div class="grid" id="services-grid"></div>
+  <div class="section-title">
+    <h2 id="services-title">Nos Créations</h2>
+  </div>
+  <div class="grid" id="services-grid"></div>
 
-    <div class="section-title">
-        <h2 id="gallery-title">Notre Galerie</h2>
-        <p id="gallery-subtitle" style="color: var(--muted); max-width: 600px; margin: 10px auto 0;">Découvrez quelques-unes de nos plus belles créations</p>
-    </div>
-    <div class="gallery-grid" id="gallery-grid"></div>
+  <div class="section-title">
+    <h2 id="gallery-title">Notre Galerie</h2>
+    <p id="gallery-subtitle" class="subtitle">Découvrez quelques-unes de nos plus belles créations</p>
+  </div>
+  <div class="gallery-grid" id="gallery-grid"></div>
 </main>
 
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="">
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <footer>
-    <div class="container">
-        <h2 id="contact-title">Contactez-nous</h2>
-        <div class="contact-info">
-            <div class="info-item">
-                <label>WhatsApp</label>
-                <span>07 49 74 39 44</span>
-            </div>
-            <div class="info-item">
-                <label id="label-location">Ville</label>
-                <span>93240 Stains</span>
-            </div>
-            <div class="info-item">
-                <label id="label-appt">Visite</label>
-                <span id="val-appt">Sur rendez-vous uniquement</span>
-            </div>
-        </div>
-        <p style="margin-top: 40px; color: var(--muted); font-size: 14px;">© <span id="year"></span> Dayana Couture — Tailored with Passion</p>
+  <div class="container">
+    <h2 id="contact-title">Contactez-nous</h2>
+    <div class="contact-info">
+      <div class="info-item">
+        <label>WhatsApp</label>
+        <span>07 49 74 39 44</span>
+      </div>
+      <div class="info-item">
+        <label id="label-location">Ville</label>
+        <span>93240 Stains</span>
+      </div>
+      <div class="info-item">
+        <label id="label-appt">Visite</label>
+        <span id="val-appt">Sur rendez-vous uniquement</span>
+      </div>
     </div>
+    <p class="copyright">© <span id="year"></span> Dayana Couture — Tailored with Passion</p>
+  </div>
 </footer>
 
-<a href="https://wa.me/33749743944" class="wa-float" target="_blank">
-    <svg width="35" height="35" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.277 0-4.14 1.848-4.14 4.14 0 .952.324 1.82.871 2.508l-.517 1.888 1.933-.507c.54.34 1.171.539 1.853.539 2.277 0 4.14-1.848 4.14-4.14 0-2.278-1.848-4.14-4.14-4.14zm3.102 5.923c-.125.35-.62.585-.853.626-.233.041-.444.053-1.22-.247-.775-.3-1.264-1.056-1.303-1.107-.038-.051-.314-.417-.314-.794 0-.377.197-.563.267-.638.07-.075.153-.093.203-.093s.101.002.145.004c.046.002.109-.017.171.129.062.146.213.521.233.563.02.042.033.091.006.146s-.041.091-.082.138c-.041.047-.086.079-.124.122-.041.045-.083.094-.035.176.047.082.211.348.452.562.311.276.574.362.661.403.087.041.137.034.188-.025.051-.059.219-.255.278-.342.059-.087.118-.073.2-.044s.521.246.611.291c.09.045.15.068.172.105.022.038.022.219-.103.569zM12 2C6.477 2 2 6.477 2 12c0 2.136.67 4.116 1.81 5.74L3 22l4.38-1.026C8.89 21.657 10.384 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.477 0-2.854-.393-4.04-1.077l-2.48.581.589-2.146C5.35 16.141 5 14.61 5 13c0-3.86 3.14-7 7-7s7 3.14 7 7-3.14 7-7 7z"/></svg>
+<a href="https://wa.me/33749743944" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="35" height="35" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.277 0-4.14 1.848-4.14 4.14 0 .952.324 1.82.871 2.508l-.517 1.888 1.933-.507c.54.34 1.171.539 1.853.539 2.277 0 4.14-1.848 4.14-4.14 0-2.278-1.848-4.14-4.14-4.14zm3.102 5.923c-.125.35-.62.585-.853.626-.233.041-.444.053-1.22-.247-.775-.3-1.264-1.056-1.303-1.107-.038-.051-.314-.417-.314-.794 0-.377.197-.563.267-.638.07-.075.153-.093.203-.093s.101.002.145.004c.046.002.109-.017.171.129.062.146.213.521.233.563.02.042.033.091.006.146s-.041.091-.082.138c-.041.047-.086.079-.124.122-.041.045-.083.094-.035.176.047.082.211.348.452.562.311.276.574.362.661.403.087.041.137.034.188-.025.051-.059.219-.255.278-.342.059-.087.118-.073.2-.044s.521.246.611.291c.09.045.15.068.172.105.022.038.022.219-.103.569zM12 2C6.477 2 2 6.477 2 12c0 2.136.67 4.116 1.81 5.74L3 22l4.38-1.026C8.89 21.657 10.384 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.477 0-2.854-.393-4.04-1.077l-2.48.581.589-2.146C5.35 16.141 5 14.61 5 13c0-3.86 3.14-7 7-7s7 3.14 7 7-3.14 7-7 7z"/></svg>
 </a>
 
-<script>
-    const translations = {
-        fr: {
-            badge: "10 ans d'expérience",
-            title: "L'élégance indienne créée pour vous.",
-            desc: "Spécialiste en Saree blouses, Lehenga, Salwar et tenues traditionnelles. Essayage personnalisé et retouches incluses à Stains.",
-            cta: "Réserver via WhatsApp",
-            services: "Nos Créations",
-            gallery: "Notre Galerie",
-            gallerySub: "Découvrez quelques-unes de nos plus belles créations",
-            contact: "Contactez-nous",
-            loc: "Ville",
-            appt: "Visite",
-            apptVal: "Sur rendez-vous uniquement",
-            items: [
-                { t: "Saree Blouses", d: "Coupes modernes ou traditionnelles, finitions de luxe." },
-                { t: "Lehenga / Choli", d: "Tenues de fête élégantes et confortables." },
-                { t: "Salwar / Churidar", d: "Ensembles sur-mesure avec un tombé impeccable." },
-                { t: "Tenues Enfants", d: "Vêtements traditionnels tamouls pour petites princesses." },
-                { t: "Retouches", d: "Ajustements précis pour toutes vos tenues existantes." },
-                { t: "Nighties & Robes", d: "Créations personnalisées pour votre confort." }
-            ],
-            galleryItems: [
-                { title: "Lehenga de Luxe", desc: "Broderie dorée sur tulle rose poudré" },
-                { title: "Tenue Enfant", desc: "Lehenga traditionnelle jaune et verte" },
-                { title: "Collection Salwar", desc: "Ensembles élégants pour toutes occasions" },
-                { title: "Blouses Saree", desc: "Designs variés avec dos travaillés" }
-            ]
-        },
-        ta: {
-            badge: "10 வருட அனுபவம்",
-            title: "உடை அழகை விரும்பும் பெண்களுக்கான தையல் கலை.",
-            desc: "சாரி பிளவுஸ், லெஹங்கா, சல்வார் மற்றும் சிறுமிகளுக்கான பாரம்பரிய உடைகள் அனைத்தும் மிகச்சிறந்த முறையில் தைத்து தரப்படும்.",
-            cta: "முன்பதிவு செய்ய",
-            services: "எங்கள் சேவைகள்",
-            gallery: "எங்கள் படத்தொகுப்பு",
-            gallerySub: "எங்கள் சிறந்த வேலைப்பாடுகளை காணுங்கள்",
-            contact: "தொடர்பு கொள்ளவும்",
-            loc: "இடம்",
-            appt: "நேரம்",
-            apptVal: "முன்பதிவு செய்தவர்கள் மட்டும்",
-            items: [
-                { t: "சாரி பிளவுஸ்", d: "நவீன மற்றும் பாரம்பரிய முறையிலான நேர்த்தியான தையல்." },
-                { t: "லெஹங்கா சோளி", d: "விழாக்களுக்கான அழகான மற்றும் வசதியான உடைகள்." },
-                { t: "சல்வார் / சுடிதார்", d: "கச்சிதமான மற்றும் நேர்த்தியான தையல் வேலைப்பாடுகள்." },
-                { t: "சிறுமிகளுக்கான உடைகள்", d: "சிறுமிகளுக்கான பாரம்பரிய தமிழ் உடைகள்." },
-                { t: "திருத்தங்கள் (Alterations)", d: "அனைத்து உடைகளுக்கும் கச்சிதமான திருத்தங்கள்." },
-                { t: "நைட்டீஸ் & டிரஸ்கள்", d: "உங்கள் விருப்பத்திற்கு ஏற்ப தைத்து தரப்படும்." }
-            ],
-            galleryItems: [
-                { title: "ஆடம்பர லெஹங்கா", desc: "இளஞ்சிவப்பு வலையில் தங்க எம்ப்ராய்டரி" },
-                { title: "குழந்தைகள் உடை", desc: "மஞ்சள் மற்றும் பச்சை பாரம்பரிய லெஹங்கா" },
-                { title: "சல்வார் தொகுப்பு", desc: "அனைத்து சந்தர்ப்பங்களுக்கும் நேர்த்தியான தொகுப்புகள்" },
-                { title: "சாரி பிளவுஸ்கள்", desc: "வெவ்வேறு முதுகு வடிவமைப்புகள்" }
-            ]
-        },
-        en: {
-            badge: "10 Years Experience",
-            title: "Indian elegance tailored just for you.",
-            desc: "Specialist in Saree blouses, Lehenga, Salwar and traditional outfits. Personalized fitting and alterations included in Stains.",
-            cta: "Book via WhatsApp",
-            services: "Our Creations",
-            gallery: "Our Gallery",
-            gallerySub: "Discover some of our finest creations",
-            contact: "Contact Us",
-            loc: "Location",
-            appt: "Visit",
-            apptVal: "By appointment only",
-            items: [
-                { t: "Saree Blouses", d: "Modern or traditional cuts with luxury finishing." },
-                { t: "Lehenga / Choli", d: "Elegant and comfortable festive wear." },
-                { t: "Salwar / Churidar", d: "Bespoke sets with a perfect drape." },
-                { t: "Kids Wear", d: "Traditional Tamil outfits for little princesses." },
-                { t: "Alterations", d: "Precise adjustments for all your existing clothes." },
-                { t: "Nighties & Dresses", d: "Customized creations for your daily comfort." }
-            ],
-            galleryItems: [
-                { title: "Luxury Lehenga", desc: "Golden embroidery on powder pink tulle" },
-                { title: "Kids Outfit", desc: "Traditional yellow and green lehenga" },
-                { title: "Salwar Collection", desc: "Elegant sets for all occasions" },
-                { title: "Saree Blouses", desc: "Varied designs with intricate back work" }
-            ]
-        }
-    };
-
-    // Images de la galerie
-    const galleryImages = [
-        'images/Lehenga1.jpg',
-        'images/petites1.jpg',
-        'images/salwar1.png',
-        'images/saree_blouse6.jpg'
-    ];
-
-    function changeLang(lang) {
-        // Update active button
-        document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(`btn-${lang}`).classList.add('active');
-
-        // Update static text
-        const t = translations[lang];
-        document.getElementById('hero-badge').innerText = t.badge;
-        document.getElementById('hero-title').innerText = t.title;
-        document.getElementById('hero-desc').innerText = t.desc;
-        document.getElementById('main-cta').innerText = t.cta;
-        document.getElementById('services-title').innerText = t.services;
-        document.getElementById('gallery-title').innerText = t.gallery;
-        document.getElementById('gallery-subtitle').innerText = t.gallerySub;
-        document.getElementById('contact-title').innerText = t.contact;
-        document.getElementById('label-location').innerText = t.loc;
-        document.getElementById('label-appt').innerText = t.appt;
-        document.getElementById('val-appt').innerText = t.apptVal;
-
-        // Update services grid
-        const grid = document.getElementById('services-grid');
-        grid.innerHTML = '';
-        t.items.forEach(item => {
-            grid.innerHTML += `
-                <div class="card">
-                    <h3>${item.t}</h3>
-                    <p>${item.d}</p>
-                </div>
-            `;
-        });
-
-        // Update gallery
-        const galleryGrid = document.getElementById('gallery-grid');
-        galleryGrid.innerHTML = '';
-        galleryImages.forEach((img, index) => {
-            const galleryItem = t.galleryItems[index];
-            galleryGrid.innerHTML += `
-                <div class="gallery-item" onclick="openLightbox('${img}')">
-                    <img src="${img}" alt="${galleryItem.title}">
-                    <div class="gallery-overlay">
-                        <h4>${galleryItem.title}</h4>
-                        <p>${galleryItem.desc}</p>
-                    </div>
-                </div>
-            `;
-        });
-    }
-
-    function openLightbox(imgSrc) {
-        document.getElementById('lightbox').classList.add('active');
-        document.getElementById('lightbox-img').src = imgSrc;
-    }
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-    }
-
-    // Close lightbox on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Set year
-    document.getElementById('year').innerText = new Date().getFullYear();
-    
-    // Initial load
-    changeLang('fr');
-</script>
-
+<script src="script.js" defer></script>
 </body>
 </html>
